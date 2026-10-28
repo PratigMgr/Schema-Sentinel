@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="orderFeed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="order" type="orderType" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="orderType">
+    <xs:sequence>
+      <xs:element name="customer" type="xs:string"/>
+      <xs:element name="total" type="totalType"/>
+      <xs:element name="item" type="itemType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="totalType">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute name="currency" type="currencyType" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="currencyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CAD"/>
+      <xs:enumeration value="USD"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="itemType">
+    <xs:attribute name="sku" type="xs:string" use="required"/>
+    <xs:attribute name="qty" type="xs:positiveInteger" use="required"/>
+  </xs:complexType>
+</xs:schema>
