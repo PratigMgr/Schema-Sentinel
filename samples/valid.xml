@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orderFeed>
+  <order id="1001">
+    <customer>Ada Lovelace</customer>
+    <total currency="CAD">25.50</total>
+    <item sku="A-100" qty="2"/>
+    <item sku="B-200" qty="1"/>
+  </order>
+</orderFeed>
