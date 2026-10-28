@@ -1,6 +1,6 @@
 # Schema Sentinel
 
-![CI](https://github.com/YOUR-USERNAME/schema-sentinel/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/PratigMgr/schema-sentinel/actions/workflows/ci.yml/badge.svg)
 
 A Spring Boot gateway that validates incoming XML feeds against versioned XSD schemas, reports **every** error with line and column numbers, and converts valid feeds to JSON.
 
