@@ -7,6 +7,6 @@ RUN mvn -q package -DskipTests
 
 FROM eclipse-temurin:21-jre
 WORKDIR /app
-COPY --from=build /app/target/schema-sentinel-0.1.0.jar app.jar
+COPY --from=build /app/target/schema-sentinel-0.2.0.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
