@@ -2,14 +2,12 @@ package dev.sentinel.api;
 
 import dev.sentinel.transform.Order;
 import dev.sentinel.transform.OrderFeedMapper;
-import dev.sentinel.validation.UnknownSchemaVersionException;
 import dev.sentinel.validation.ValidationError;
 import dev.sentinel.validation.XmlValidationService;
 import java.util.List;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,10 +46,5 @@ public class FeedController {
         }
         List<Order> orders = mapper.map(body);
         return ResponseEntity.ok(Map.of("valid", true, "schemaVersion", version, "orders", orders));
-    }
-
-    @ExceptionHandler(UnknownSchemaVersionException.class)
-    public ResponseEntity<Map<String, String>> unknownVersion(UnknownSchemaVersionException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", e.getMessage()));
     }
 }
